@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="container-margin">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h1><i class="bi bi-person-fill"></i> {{totalEmployee}}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div class="card">
+        <div class="card-body">
+          <div>
+            <h6>Highest earning employee: <span>{{highestEarningEmployee}}</span></h6>
+
+            <h6>Employee most recently joined: <span>{{recentJoinEmployee}}</span></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md">
+      <div class="table-responsive table-padding">
+        <table class="table table-striped">
+        <thead>
+        <tr>
+          <th (click)="onSort('fullname',nameOrder)">FullName
+            <i *ngIf="nameOrder == true" class="bi bi-arrow-down"></i>
+            <i *ngIf="nameOrder == false" class="bi bi-arrow-up"></i>
+          </th>
+          <th (click)="onSort('dateJoin',dateOrder)">Date Joined
+            <i *ngIf="dateOrder == true" class="bi bi-arrow-down"></i>
+            <i *ngIf="dateOrder == false" class="bi bi-arrow-up"></i>
+          </th>
+          <th (click)="onSort('salary',salaryOrder)">Salary
+            <i *ngIf="salaryOrder == true" class="bi bi-arrow-down"></i>
+            <i *ngIf="salaryOrder == false" class="bi bi-arrow-up"></i>
+          </th>
+        </tr>
+        </thead>
+        <tbody class="">
+          <tr *ngFor="let employee of displayData">
+            <td>{{employee.firstname + ' ' + employee.lastname}}</td>
+            <td>{{employee.dateJoined | date}}</td>
+            <td>{{employee.salary | currency: 'MYR'}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
